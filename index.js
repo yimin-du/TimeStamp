@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var port = process.env.PORT || 8080;
 
 app.get('/:timestamp', (req, res) => {
 	var unixtime;
@@ -39,4 +40,4 @@ app.use((err, req, res, next) => {
 
 
 
-app.listen(3333);
+app.listen(port);
