@@ -2,6 +2,12 @@ var express = require('express');
 var app = express();
 var port = process.env.PORT || 8080;
 
+app.use(express.static(__dirname + '/public'));
+
+app.get('/', (req, res) => {
+	res.send('/public/index.html');
+});
+
 app.get('/:timestamp', (req, res) => {
 	var unixtime;
 	var timestamp = req.params.timestamp;
@@ -40,4 +46,6 @@ app.use((err, req, res, next) => {
 
 
 
-app.listen(port);
+app.listen(port, function() {
+    console.log('Our app is running on port:' + port);
+});
